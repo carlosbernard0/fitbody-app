@@ -1,7 +1,7 @@
 import { globalFonts } from '@/styles/globalFonts'
 import { Image, ImageBackground, Text, View } from 'react-native'
 
-export default function SplashScreen() {
+export default function WelcomeSplash() {
   return (
     <ImageBackground
       source={require('@/assets/images/woman-training-workout-gym.png')}
