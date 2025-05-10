@@ -1,5 +1,14 @@
 import { globalFonts } from '@/styles/globalFonts'
-import { Dimensions, Image, ImageBackground, Text, View } from 'react-native'
+import { BlurView } from 'expo-blur'
+import { ChevronRight } from 'lucide-react-native'
+import {
+  Dimensions,
+  Image,
+  ImageBackground,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native'
 import Carousel from 'react-native-reanimated-carousel'
 
 const onboardingScreens = [
@@ -49,21 +58,71 @@ export default function Welcome() {
             source={item.background}
             resizeMode="cover"
           >
+            {item.step !== 3 && (
+              <View className=" absolute top-14 right-5">
+                <TouchableOpacity className="flex-row items-center">
+                  <Text className="text-limegreen text-lg">Skip</Text>
+                  <ChevronRight color="#E2F163" size={20} />
+                </TouchableOpacity>
+              </View>
+            )}
             <View
               style={{ width }}
-              className="h-48 bg-lightpurple items-center p-2"
+              className="h-48 bg-lightpurple items-center p-6"
             >
               <Image source={item.icon} tintColor={'#E2F163'} />
               <Text
-                className="flex-1 p-7 text-center text-white"
+                className="flex-1 p-2 text-center text-white"
                 style={globalFonts.poppinsBold}
               >
                 {item.text}
               </Text>
+              <StepVisualize step={item.step} />
             </View>
+            <BlurView
+              intensity={50}
+              tint="dark"
+              style={{ borderRadius: 24 }}
+              className="absolute bottom-64 justify-center items-center overflow-hidden"
+            >
+              <TouchableOpacity className="p-3 w-[200px]  border-white border-2 rounded-3xl">
+                <Text
+                  style={globalFonts.poppinsBold}
+                  className="text-white text-center"
+                >
+                  {item.step !== 3 ? 'Next' : 'Get Started'}
+                </Text>
+              </TouchableOpacity>
+            </BlurView>
           </ImageBackground>
         )}
       />
+    </View>
+  )
+}
+
+interface StepVisualizeProps {
+  step: number
+}
+
+const StepVisualize = ({ step }: StepVisualizeProps) => {
+  return (
+    <View className="flex-row gap-2 items-center">
+      <Text
+        className={`${step === 1 ? 'text-white bg-white' : 'text-purple bg-purple'} w-8 h-2 rounded-xl`}
+      >
+        -
+      </Text>
+      <Text
+        className={`${step === 2 ? 'text-white bg-white' : 'text-purple bg-purple'} w-8 h-2 rounded-xl`}
+      >
+        -
+      </Text>
+      <Text
+        className={`${step === 3 ? 'text-white bg-white' : 'text-purple bg-purple'} w-8 h-2 rounded-xl`}
+      >
+        -
+      </Text>
     </View>
   )
 }
