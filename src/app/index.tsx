@@ -7,8 +7,8 @@ function Home() {
     <View className="flex-1 items-center justify-center">
       <Text style={globalFonts.poppinsMedium}>Hello Template</Text>
       <Text style={globalFonts.leagueSpartanMedium}>is okay baby</Text>
-      <TouchableOpacity onPress={() => router.push('/onboarding')}>
-        <Text>go to onboarding</Text>
+      <TouchableOpacity onPress={() => router.push('/login')}>
+        <Text>go to login</Text>
       </TouchableOpacity>
     </View>
   )

@@ -16,6 +16,7 @@ import {
 } from '@expo-google-fonts/poppins'
 import React, { useEffect, useState } from 'react'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
+import { SafeAreaProvider } from 'react-native-safe-area-context'
 import SplashScreen from './onboarding/welcome-splash'
 
 export default function Layout() {
@@ -41,8 +42,10 @@ export default function Layout() {
   if (!poppinsLoaded || !spartanLoaded || !splashDone) return <SplashScreen />
 
   return (
-    <GestureHandlerRootView className="flex-1">
-      <Stack screenOptions={{ headerShown: false }} />
-    </GestureHandlerRootView>
+    <SafeAreaProvider className="flex-1">
+      <GestureHandlerRootView className="flex-1">
+        <Stack screenOptions={{ headerShown: false }} />
+      </GestureHandlerRootView>
+    </SafeAreaProvider>
   )
 }

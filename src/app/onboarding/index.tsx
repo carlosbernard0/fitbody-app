@@ -1,6 +1,8 @@
 import { globalFonts } from '@/styles/globalFonts'
 import { BlurView } from 'expo-blur'
+import { router } from 'expo-router'
 import { ChevronRight } from 'lucide-react-native'
+import React from 'react'
 import {
   Dimensions,
   Image,
@@ -9,7 +11,9 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native'
+import { useSharedValue } from 'react-native-reanimated'
 import Carousel from 'react-native-reanimated-carousel'
+import type { ICarouselInstance } from 'react-native-reanimated-carousel'
 
 const onboardingScreens = [
   {
@@ -34,19 +38,35 @@ const onboardingScreens = [
 
 const { width, height } = Dimensions.get('window')
 
-export default function Welcome() {
+export default function Onboarding() {
+  const progress = useSharedValue<number>(0)
+  const ref = React.useRef<ICarouselInstance>(null)
+
+  const onPressPagination = (index: number) => {
+    if (index === 3) {
+      router.navigate('/login')
+    } else {
+      ref.current?.scrollTo({
+        count: index - progress.value,
+        animated: true,
+      })
+    }
+  }
+
   return (
     <View
       className="flex-1 items-center justify-center"
       id="carousel-component"
     >
       <Carousel
+        ref={ref}
         width={width}
         height={height}
         autoPlayInterval={2000}
         loop={false}
         data={onboardingScreens}
         snapEnabled={true}
+        onProgressChange={progress}
         style={{
           flex: 1,
           justifyContent: 'center',
@@ -85,7 +105,10 @@ export default function Welcome() {
               style={{ borderRadius: 24 }}
               className="absolute bottom-64 justify-center items-center overflow-hidden"
             >
-              <TouchableOpacity className="p-3 w-[200px]  border-white border-2 rounded-3xl">
+              <TouchableOpacity
+                onPress={() => onPressPagination(item.step)}
+                className="p-3 w-[200px]  border-white border-2 rounded-3xl"
+              >
                 <Text
                   style={globalFonts.poppinsBold}
                   className="text-white text-center"
