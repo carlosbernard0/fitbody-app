@@ -3,7 +3,7 @@ import { Input } from '@/components/input'
 import { globalFonts } from '@/styles/globalFonts'
 import { sleep } from '@/utils/sleep'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { router } from 'expo-router'
+import { router, usePathname } from 'expo-router'
 import { ChevronLeftIcon, User } from 'lucide-react-native'
 import { useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
@@ -18,6 +18,7 @@ const forgotSchema = z.object({
 })
 
 export default function ForgotPass() {
+  const pathname = usePathname()
   const [loadingForgot, setLoadingForgot] = useState<boolean>(false)
   const {
     handleSubmit,
@@ -29,11 +30,11 @@ export default function ForgotPass() {
 
   const handleForgot = async (data: ForgotData) => {
     setLoadingForgot(true)
-    console.log(data)
 
     await sleep(2000)
 
     setLoadingForgot(false)
+    router.push(`${pathname}/new-pass`)
   }
   return (
     <SafeAreaView className="flex-1 bg-black gap-5">
@@ -62,8 +63,8 @@ export default function ForgotPass() {
       </View>
 
       <View className="flex-[.6]">
-        <View className="h-32 bg-lightpurple items-center justify-center">
-          <View className="w-2/3 gap-2 p-4">
+        <View className="min-h-32 py-4 bg-lightpurple items-center justify-center">
+          <View className="w-2/3 gap-2">
             <Text className="text-lg font-bold">Enter your email address</Text>
             <Controller
               control={control}
@@ -87,7 +88,11 @@ export default function ForgotPass() {
             onPress={handleSubmit(handleForgot)}
             className="bg-blacksecundary"
           >
-            {loadingForgot ? <ActivityIndicator /> : <Text>Continue</Text>}
+            {loadingForgot ? (
+              <ActivityIndicator color="#FFF" />
+            ) : (
+              <Text>Continue</Text>
+            )}
           </Button>
         </View>
       </View>

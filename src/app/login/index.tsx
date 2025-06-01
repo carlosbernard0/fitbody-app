@@ -1,6 +1,6 @@
 import { globalFonts } from '@/styles/globalFonts'
 import { sleep } from '@/utils/sleep'
-import { router } from 'expo-router'
+import { router, usePathname } from 'expo-router'
 import { useState } from 'react'
 import { Image, Text, TouchableOpacity, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
@@ -9,6 +9,7 @@ import type { FormLoginData } from './login-schema'
 
 export default function Login() {
   const [loadingLogin, setLoadingLogin] = useState<boolean>(false)
+  const pathname = usePathname()
 
   const handleLogin = async (data: FormLoginData) => {
     setLoadingLogin(true)
@@ -53,9 +54,6 @@ export default function Login() {
             </TouchableOpacity>
             <TouchableOpacity>
               <Image source={require('@/assets/icons/Facebook-Icon.png')} />
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <Image source={require('@/assets/icons/Fingerprint-Icon.png')} />
             </TouchableOpacity>
           </View>
         </View>

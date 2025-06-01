@@ -4,7 +4,7 @@ import { globalFonts } from '@/styles/globalFonts'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { User } from 'lucide-react-native'
 import { Controller, useForm } from 'react-hook-form'
-import { ActivityIndicator, Text, View } from 'react-native'
+import { ActivityIndicator, ScrollView, Text, View } from 'react-native'
 import { type FormRegisterData, registerSchema } from './register-schema'
 
 interface FormRegisterProps {
@@ -26,82 +26,86 @@ export const FormRegister = ({
 
   return (
     <>
-      <View className="bg-lightpurple w-full h-[394px] items-center justify-center gap-4 flex-1">
-        <View className="w-2/3 gap-2">
-          <Text className="text-lg font-bold">Username</Text>
-          <Controller
-            control={control}
-            name="name"
-            render={({ field }) => (
-              <Input
-                value={field.value}
-                onChangeText={field.onChange}
-                icon={<User color="#6C757D" />}
-                placeholder="example_01"
-              />
+      <ScrollView className="flex-1">
+        <View className="bg-lightpurple w-full min-h-[394px] py-4 items-center justify-center gap-4 ">
+          <View className="w-2/3 gap-2">
+            <Text className="text-lg font-bold">Username</Text>
+            <Controller
+              control={control}
+              name="name"
+              render={({ field }) => (
+                <Input
+                  value={field.value}
+                  onChangeText={field.onChange}
+                  icon={<User color="#6C757D" />}
+                  placeholder="example_01"
+                />
+              )}
+            />
+            {errors.name && (
+              <Text className="text-red-500 mt-1">{errors.name.message}</Text>
             )}
-          />
-          {errors.name && (
-            <Text className="text-red-500 mt-1">{errors.name.message}</Text>
-          )}
-        </View>
-        <View className="w-2/3 gap-2">
-          <Text className="text-lg font-bold">Email</Text>
-          <Controller
-            control={control}
-            name="email"
-            render={({ field }) => (
-              <Input
-                value={field.value}
-                onChangeText={field.onChange}
-                icon={<User color="#6C757D" />}
-                placeholder="example@example.com"
-              />
+          </View>
+          <View className="w-2/3 gap-2">
+            <Text className="text-lg font-bold">Email</Text>
+            <Controller
+              control={control}
+              name="email"
+              render={({ field }) => (
+                <Input
+                  value={field.value}
+                  onChangeText={field.onChange}
+                  icon={<User color="#6C757D" />}
+                  placeholder="example@example.com"
+                />
+              )}
+            />
+            {errors.email && (
+              <Text className="text-red-500 mt-1">{errors.email.message}</Text>
             )}
-          />
-          {errors.email && (
-            <Text className="text-red-500 mt-1">{errors.email.message}</Text>
-          )}
-        </View>
-        <View className="w-2/3 gap-2">
-          <Text className="text-lg font-bold">Password</Text>
-          <Controller
-            control={control}
-            name="password"
-            render={({ field }) => (
-              <Input
-                value={field.value}
-                onChangeText={field.onChange}
-                secureTextEntry
-                placeholder="*************"
-              />
+          </View>
+          <View className="w-2/3 gap-2">
+            <Text className="text-lg font-bold">Password</Text>
+            <Controller
+              control={control}
+              name="password"
+              render={({ field }) => (
+                <Input
+                  value={field.value}
+                  onChangeText={field.onChange}
+                  secureTextEntry
+                  placeholder="*************"
+                />
+              )}
+            />
+            {errors.password && (
+              <Text className="text-red-500 mt-1">
+                {errors.password.message}
+              </Text>
             )}
-          />
-          {errors.password && (
-            <Text className="text-red-500 mt-1">{errors.password.message}</Text>
-          )}
-        </View>
-        <View className="w-2/3 gap-2">
-          <Text className="text-lg font-bold">Confirm Password</Text>
-          <Controller
-            control={control}
-            name="confirmPassword"
-            render={({ field }) => (
-              <Input
-                value={field.value}
-                onChangeText={field.onChange}
-                secureTextEntry
-                placeholder="*************"
-              />
+          </View>
+          <View className="w-2/3 gap-2">
+            <Text className="text-lg font-bold">Confirm Password</Text>
+            <Controller
+              control={control}
+              name="confirmPassword"
+              render={({ field }) => (
+                <Input
+                  value={field.value}
+                  onChangeText={field.onChange}
+                  secureTextEntry
+                  placeholder="*************"
+                />
+              )}
+            />
+            {errors.confirmPassword && (
+              <Text className="text-red-500 mt-1">
+                {errors.confirmPassword.message}
+              </Text>
             )}
-          />
-          {errors.confirmPassword && (
-            <Text className="text-red-500 mt-1">
-              {errors.confirmPassword.message}
-            </Text>
-          )}
+          </View>
         </View>
-      </View>
+      </ScrollView>
       <View className="bg-black items-center pt-5 gap-4">
         <Text
           style={globalFonts.leagueSpartanRegular}
@@ -116,7 +120,11 @@ export const FormRegister = ({
           onPress={handleSubmit(handleRegister)}
           className="bg-blacksecundary"
         >
-          {loadingRegister ? <ActivityIndicator /> : <Text>Sign Up</Text>}
+          {loadingRegister ? (
+            <ActivityIndicator color="#FFF" />
+          ) : (
+            <Text>Sign Up</Text>
+          )}
         </Button>
       </View>
     </>

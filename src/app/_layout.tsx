@@ -15,6 +15,7 @@ import {
   useFonts as usePoppins,
 } from '@expo-google-fonts/poppins'
 import React, { useEffect, useState } from 'react'
+import { StatusBar } from 'react-native'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 import SplashScreen from './onboarding/welcome-splash'
@@ -44,6 +45,7 @@ export default function Layout() {
   return (
     <SafeAreaProvider className="flex-1">
       <GestureHandlerRootView className="flex-1">
+        <StatusBar barStyle="light-content" />
         <Stack screenOptions={{ headerShown: false }} />
       </GestureHandlerRootView>
     </SafeAreaProvider>

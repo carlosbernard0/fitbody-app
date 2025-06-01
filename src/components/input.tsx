@@ -37,7 +37,7 @@ export function Input({
           className="mr-3"
           onPress={() => setShowPassword(prev => !prev)}
         >
-          {showPassword ? <EyeOff color="#c9c9c9" /> : <Eye color="#c9c9c9" />}
+          {showPassword ? <Eye color="#c9c9c9" /> : <EyeOff color="#c9c9c9" />}
         </TouchableOpacity>
       )}
     </View>

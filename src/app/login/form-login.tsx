@@ -24,7 +24,7 @@ export const FormLogin = ({ handleLogin, loadingLogin }: FormLoginProps) => {
 
   return (
     <>
-      <View className="bg-lightpurple w-full h-72 items-center justify-center gap-4">
+      <View className="bg-lightpurple w-full min-h-72 py-4 items-center justify-center gap-4">
         <View className="w-2/3 gap-2">
           <Text className="text-lg font-bold">Usarname or email</Text>
           <Controller
@@ -73,7 +73,11 @@ export const FormLogin = ({ handleLogin, loadingLogin }: FormLoginProps) => {
           onPress={handleSubmit(handleLogin)}
           className="bg-blacksecundary"
         >
-          {loadingLogin ? <ActivityIndicator /> : <Text>Log In</Text>}
+          {loadingLogin ? (
+            <ActivityIndicator color="#FFF" />
+          ) : (
+            <Text>Log In</Text>
+          )}
         </Button>
       </View>
     </>
