@@ -76,7 +76,7 @@ describe('sleep utility', () => {
   })
 
   it('should work with async/await pattern', async () => {
-    const startTime = Date.now()
+    const _startTime = Date.now()
 
     const sleepPromise = sleep(100)
     jest.advanceTimersByTime(100)

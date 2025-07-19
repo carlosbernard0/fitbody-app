@@ -1,12 +1,12 @@
-import { Button } from '@/components/button'
-import { Input } from '@/components/input'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { router } from 'expo-router'
 import { User } from 'lucide-react-native'
 import { Controller, useForm } from 'react-hook-form'
 import { ActivityIndicator, Text, TouchableOpacity, View } from 'react-native'
-import { loginSchema } from './login-schema'
+import { Button } from '@/components/button'
+import { Input } from '@/components/input'
 import type { FormLoginData } from './login-schema'
+import { loginSchema } from './login-schema'
 
 interface FormLoginProps {
   handleLogin: (data: FormLoginData) => void

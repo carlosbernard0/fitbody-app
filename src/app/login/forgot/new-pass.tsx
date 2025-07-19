@@ -1,7 +1,3 @@
-import { Button } from '@/components/button'
-import { Input } from '@/components/input'
-import { globalFonts } from '@/styles/globalFonts'
-import { sleep } from '@/utils/sleep'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { router } from 'expo-router'
 import { ChevronLeftIcon } from 'lucide-react-native'
@@ -10,6 +6,10 @@ import { Controller, useForm } from 'react-hook-form'
 import { ActivityIndicator, Text, TouchableOpacity, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { z } from 'zod'
+import { Button } from '@/components/button'
+import { Input } from '@/components/input'
+import { globalFonts } from '@/styles/globalFonts'
+import { sleep } from '@/utils/sleep'
 
 type NewPassData = z.infer<typeof newPassSchema>
 
@@ -33,7 +33,7 @@ export default function NewPass() {
     resolver: zodResolver(newPassSchema),
   })
 
-  const handleNewPass = async (data: NewPassData) => {
+  const handleNewPass = async (_data: NewPassData) => {
     setLoadingNewPass(true)
 
     await sleep(2000)

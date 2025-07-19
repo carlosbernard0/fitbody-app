@@ -1,5 +1,5 @@
-import { globalFonts } from '@/styles/globalFonts'
 import { Image, ImageBackground, Text, View } from 'react-native'
+import { globalFonts } from '@/styles/globalFonts'
 
 export default function WelcomeSplash() {
   return (

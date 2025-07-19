@@ -1,14 +1,14 @@
-import { Button } from '@/components/button'
-import { globalFonts } from '@/styles/globalFonts'
 import * as LocalAuthentication from 'expo-local-authentication'
 import { router } from 'expo-router'
 import { ChevronLeftIcon, Fingerprint } from 'lucide-react-native'
 import { useEffect, useState } from 'react'
 import { Alert, Text, TouchableOpacity, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
+import { Button } from '@/components/button'
+import { globalFonts } from '@/styles/globalFonts'
 
 export default function FingerprintScreen() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [_isAuthenticated, setIsAuthenticated] = useState(false)
 
   const verifyAvailableAuthentication = async () => {
     const compatible = await LocalAuthentication.hasHardwareAsync()
@@ -41,7 +41,7 @@ export default function FingerprintScreen() {
     router.navigate('/setup')
   }
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
+  // biome-ignore lint/correctness/useExhaustiveDependencies: false positive
   useEffect(() => {
     verifyAvailableAuthentication()
   }, [])

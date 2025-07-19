@@ -1,7 +1,3 @@
-import { Button } from '@/components/button'
-import { Input } from '@/components/input'
-import { globalFonts } from '@/styles/globalFonts'
-import { sleep } from '@/utils/sleep'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { router, usePathname } from 'expo-router'
 import { ChevronLeftIcon, User } from 'lucide-react-native'
@@ -10,6 +6,10 @@ import { Controller, useForm } from 'react-hook-form'
 import { ActivityIndicator, Text, TouchableOpacity, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { z } from 'zod'
+import { Button } from '@/components/button'
+import { Input } from '@/components/input'
+import { globalFonts } from '@/styles/globalFonts'
+import { sleep } from '@/utils/sleep'
 
 type ForgotData = z.infer<typeof forgotSchema>
 
@@ -28,7 +28,7 @@ export default function ForgotPass() {
     resolver: zodResolver(forgotSchema),
   })
 
-  const handleForgot = async (data: ForgotData) => {
+  const handleForgot = async (_data: ForgotData) => {
     setLoadingForgot(true)
 
     await sleep(2000)

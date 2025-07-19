@@ -1,6 +1,6 @@
-import { globalFonts } from '@/styles/globalFonts'
 import { router } from 'expo-router'
 import { Text, TouchableOpacity, View } from 'react-native'
+import { globalFonts } from '@/styles/globalFonts'
 
 function Home() {
   return (

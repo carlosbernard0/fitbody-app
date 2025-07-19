@@ -43,7 +43,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
-    "@biomejs/biome": "^1.9.4",
+    "@biomejs/biome": "^2.1.2",
     "@types/expo": "^33.0.3",
     "@types/react": "~19.0.10",
     "@types/react-native": "^0.73.0",

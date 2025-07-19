@@ -1,4 +1,3 @@
-import { globalFonts } from '@/styles/globalFonts'
 import { BlurView } from 'expo-blur'
 import { router } from 'expo-router'
 import { ChevronRight } from 'lucide-react-native'
@@ -12,8 +11,9 @@ import {
   View,
 } from 'react-native'
 import { useSharedValue } from 'react-native-reanimated'
-import Carousel from 'react-native-reanimated-carousel'
 import type { ICarouselInstance } from 'react-native-reanimated-carousel'
+import Carousel from 'react-native-reanimated-carousel'
+import { globalFonts } from '@/styles/globalFonts'
 
 const onboardingScreens = [
   {

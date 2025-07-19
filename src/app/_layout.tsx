@@ -14,7 +14,7 @@ import {
   Poppins_900Black,
   useFonts as usePoppins,
 } from '@expo-google-fonts/poppins'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { StatusBar } from 'react-native'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import { SafeAreaProvider } from 'react-native-safe-area-context'

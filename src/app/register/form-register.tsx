@@ -1,10 +1,10 @@
-import { Button } from '@/components/button'
-import { Input } from '@/components/input'
-import { globalFonts } from '@/styles/globalFonts'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { User } from 'lucide-react-native'
 import { Controller, useForm } from 'react-hook-form'
 import { ActivityIndicator, ScrollView, Text, View } from 'react-native'
+import { Button } from '@/components/button'
+import { Input } from '@/components/input'
+import { globalFonts } from '@/styles/globalFonts'
 import { type FormRegisterData, registerSchema } from './register-schema'
 
 interface FormRegisterProps {

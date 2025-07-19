@@ -1,10 +1,10 @@
-import { globalFonts } from '@/styles/globalFonts'
-import { sleep } from '@/utils/sleep'
 import { router } from 'expo-router'
 import { ChevronLeftIcon } from 'lucide-react-native'
 import { useState } from 'react'
 import { Image, Text, TouchableOpacity, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
+import { globalFonts } from '@/styles/globalFonts'
+import { sleep } from '@/utils/sleep'
 import { FormRegister } from './form-register'
 import type { FormRegisterData } from './register-schema'
 

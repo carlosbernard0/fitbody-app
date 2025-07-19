@@ -1,10 +1,8 @@
-import { globalFonts } from '@/styles/globalFonts'
-import { BlurView } from 'expo-blur'
-import {} from 'nativewind'
 import type { ReactNode } from 'react'
-import { Text, TouchableOpacity } from 'react-native'
 import type { TouchableOpacityProps } from 'react-native'
+import { Text, TouchableOpacity } from 'react-native'
 import { twMerge } from 'tailwind-merge'
+import { globalFonts } from '@/styles/globalFonts'
 
 interface ButtonProps extends TouchableOpacityProps {
   disabled?: boolean
