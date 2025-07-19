@@ -35,6 +35,7 @@ export function Input({
       {isPassword && (
         <TouchableOpacity
           className="mr-3"
+          testID="eye-toggle"
           onPress={() => setShowPassword(prev => !prev)}
         >
           {showPassword ? <Eye color="#c9c9c9" /> : <EyeOff color="#c9c9c9" />}

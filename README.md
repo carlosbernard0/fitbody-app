@@ -212,6 +212,90 @@ npm run ios
 npm run web
 ```
 
+## 🧪 Testes
+
+### **Executar Testes**
+
+```bash
+# Executar todos os testes
+npm test
+
+# Executar testes em modo watch
+npm run test:watch
+
+# Executar testes com cobertura
+npm run test:coverage
+```
+
+### **Estrutura de Testes**
+
+```
+src/
+├── components/
+│   └── __tests__/
+│       ├── button.test.tsx      # Testes do componente Button
+│       └── input.test.tsx       # Testes do componente Input
+├── app/
+│   ├── __tests__/
+│   │   └── index.test.tsx       # Testes da página inicial
+│   ├── login/
+│   │   └── __tests__/
+│   │       └── login-schema.test.ts    # Testes do schema de login
+│   └── register/
+│       └── __tests__/
+│           └── register-schema.test.ts # Testes do schema de registro
+├── utils/
+│   └── __tests__/
+│       └── sleep.test.ts        # Testes da função sleep
+└── __tests__/
+    └── integration.test.tsx     # Testes de integração
+```
+
+### **Tipos de Testes Implementados**
+
+#### **1. Testes Unitários**
+
+- **Componentes**: Testes dos componentes `Button` e `Input`
+
+  - Renderização correta
+  - Interações do usuário (cliques, digitação)
+  - Props e estados
+  - Comportamento com dados inválidos
+
+- **Schemas de Validação**: Testes dos schemas Zod
+
+  - Validação de dados válidos
+  - Validação de dados inválidos
+  - Mensagens de erro
+  - Edge cases e casos extremos
+
+- **Utilitários**: Testes das funções auxiliares
+  - Função `sleep` com timers
+  - Comportamento assíncrono
+  - Casos de erro
+
+#### **2. Testes de Integração**
+
+- **Interação entre Componentes**: Como `Button` e `Input` trabalham juntos
+- **Validação de Formulários**: Integração entre schemas e componentes
+- **Navegação**: Testes do sistema de roteamento
+- **Estilização**: Consistência visual entre componentes
+- **Tratamento de Erros**: Como o sistema lida com falhas
+- **Acessibilidade**: Suporte a recursos de acessibilidade
+
+#### **3. Testes de Páginas**
+
+- **Página Inicial**: Renderização e navegação
+- **Interações do Usuário**: Cliques e navegação entre telas
+
+### **Cobertura de Testes**
+
+- ✅ **Componentes**: 100% dos componentes principais
+- ✅ **Schemas**: 100% das validações
+- ✅ **Utilitários**: 100% das funções auxiliares
+- ✅ **Páginas**: Páginas principais
+- ✅ **Integração**: Fluxos principais do aplicativo
+
 ## 📱 Funcionalidades Principais
 
 ### **Autenticação**
